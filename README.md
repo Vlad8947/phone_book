@@ -79,7 +79,7 @@
       url: /phone_entry/create
       Request body: 	
         {
-          "ownerId"		: 3,
+          "ownerId" : 3,
           "phoneName"	: "Andrey",
           "phoneNumber"	: "505"
         }
@@ -105,7 +105,7 @@
           "phoneName" : "Andrey",
           "phoneNumber"	: "505"
         }
-          где	"id" - идентификатор записи
+          где "id" - идентификатор записи
             "ownerId" - id пользователя, которому назначить данную запись;
             "phoneName" - имя собственника номера телефона;
             "phoneNumber" - номер телефона.
