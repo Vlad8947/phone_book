@@ -44,11 +44,9 @@ public class PhoneEntryDataTest {
         List<PhoneEntryEntity> entries = getEntries();
 
         PhoneEntryEntity actEntryEntity1 = entries.get(id++);
-        actEntryEntity1.setId(id);
         entryData.add(actEntryEntity1);
 
         PhoneEntryEntity actEntryEntity2 = entries.get(id++);
-        actEntryEntity2.setId(id);
         entryData.add(actEntryEntity2);
 
         // Assert actEntryEntity1
@@ -187,10 +185,15 @@ public class PhoneEntryDataTest {
 
         // Delete existing entity
         PhoneEntryEntity expEntryEntity = entryData.delete(id);
+        // Entry collection contain id
+        boolean contain = entryData.getEntryMap().containsKey(id);
+        // Owner contain entry id
+        boolean ownerContainId = expEntryEntity.getOwner().getPhoneEntryIds().contains(id);
+
         assertNotNull("Entry was not found", expEntryEntity);
         assertEntry(expEntryEntity, actEntryEntity);
-        boolean contain = entryData.getEntryMap().containsKey(id);
         assertFalse("Entry data contain the entity after delete", contain);
+        assertFalse("Owner contain deleted entry id", ownerContainId);
 
         // Delete not existing entity
         id = 3;
